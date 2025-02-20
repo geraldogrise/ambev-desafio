@@ -71,15 +71,12 @@ public class UsersController : BaseController
     [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateUser([FromRoute] Guid id, [FromBody] UpdateUserRequest request, CancellationToken cancellationToken)
     {
-        if (id != request.Id)
-            return BadRequest(new ApiResponse { Success = false, Message = "ID in URL does not match ID in request body" });
-
         var validator = new UpdateUserRequestValidator();
         var validationResult = await validator.ValidateAsync(request, cancellationToken);
 
         if (!validationResult.IsValid)
             return BadRequest(validationResult.Errors);
-
+        request.Id = id;
         var command = _mapper.Map<UpdateUserCommand>(request);
         var response = await _mediator.Send(command, cancellationToken);
 

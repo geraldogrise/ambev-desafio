@@ -14,12 +14,17 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         public required string Description { get; set; }
         public required string Category { get; set; }
         public required string Image { get; set; }
-        public required RatingInfo Rating { get; set; }
+        public required RatttingDto Rating { get; set; }
     }
-    public class RatingInfo
+    public class RatttingDto
     {
         public required double Rate { get; set; }
         public required int Count { get; set; }
+
+        public static implicit operator RatttingDto(DeveloperEvaluation.Application.Products.CreateProduct.RatingDto v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

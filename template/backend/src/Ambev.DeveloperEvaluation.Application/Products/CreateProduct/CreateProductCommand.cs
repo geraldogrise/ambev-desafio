@@ -49,7 +49,7 @@ public class RatingDto
     /// <summary>
     /// Gets or sets the rating value.
     /// </summary>
-    public decimal Rate { get; set; }
+    public double Rate { get; set; }
 
     /// <summary>
     /// Gets or sets the rating count.

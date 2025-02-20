@@ -32,5 +32,34 @@ namespace Ambev.DeveloperEvaluation.Common.Result
         /// Total number of pages available.
         /// </summary>
         public int TotalPages { get; set; }
+
+
+
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public PagedResult() { }
+
+
+        /// <summary>
+        /// Constructor with parameters.
+        /// </summary>
+        public PagedResult(IEnumerable<T> data, int totalItems, int totalPages)
+        {
+            Data = data ?? new List<T>();
+            TotalItems = totalItems;
+            TotalPages = totalPages;
+        }
+
+        /// <summary>
+        /// Constructor with parameters.
+        /// </summary>
+        public PagedResult(IEnumerable<T> data, int totalItems, int currentPage, int totalPages)
+        {
+            Data = data ?? new List<T>();
+            TotalItems = totalItems;
+            CurrentPage = currentPage;
+            TotalPages = totalPages;
+        }
     }
 }

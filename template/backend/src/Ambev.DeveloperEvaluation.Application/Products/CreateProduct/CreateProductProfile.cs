@@ -12,7 +12,7 @@ namespace Ambev.DeveloperEvaluation.Application.Products.CreateProduct
         {
             CreateMap<CreateProductCommand, Product>();
             CreateMap<Product, CreateProductResult>();
-            CreateMap<RatingDto, RatingInfo>().ReverseMap();
+            CreateMap<RatingDto, RatttingDto>().ReverseMap();
             CreateMap<Product, ProductDTO>().ReverseMap();
         }
     }

@@ -37,8 +37,8 @@ namespace Ambev.DeveloperEvaluation.Unit.Application.Carts
             var order = "desc";
             var carts = new List<Cart>
             {
-                new Cart { Id = Guid.NewGuid(), UserId = Guid.NewGuid(), Items = new List<CartItem>() },
-                new Cart { Id = Guid.NewGuid(), UserId = Guid.NewGuid(), Items = new List<CartItem>() }
+                new Cart { Id = Guid.NewGuid(), UserId = Guid.NewGuid(), Items = new List<Ambev.DeveloperEvaluation.Domain.Entities.CartItem>() },
+                new Cart { Id = Guid.NewGuid(), UserId = Guid.NewGuid(), Items = new List<Ambev.DeveloperEvaluation.Domain.Entities.CartItem>() }
             };
             var paginatedCarts = new PagedResult<Cart>(carts, carts.Count, page, size);
 

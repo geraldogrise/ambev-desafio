@@ -20,11 +20,6 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
     {
         public required double Rate { get; set; }
         public required int Count { get; set; }
-
-        public static implicit operator RatttingDto(DeveloperEvaluation.Application.Products.CreateProduct.RatingDto v)
-        {
-            throw new NotImplementedException();
-        }
     }
 
 }

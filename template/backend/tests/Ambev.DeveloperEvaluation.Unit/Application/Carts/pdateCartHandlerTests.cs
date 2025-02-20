@@ -45,8 +45,8 @@ namespace Ambev.DeveloperEvaluation.Unit.Application.Carts
                 }
             };
 
-            var cart = new Cart { Id = cartId, UserId = userId, Items = new List<CartItem>() };
-            var updatedCart = new Cart { Id = cartId, UserId = userId, Items = request.Items.Select(i => new CartItem { ProductId = i.ProductId, Quantity = i.Quantity }).ToList() };
+            var cart = new Cart { Id = cartId, UserId = userId, Items = new List<Ambev.DeveloperEvaluation.Domain.Entities.CartItem>() };
+            var updatedCart = new Cart { Id = cartId, UserId = userId, Items = request.Items.Select(i => new Ambev.DeveloperEvaluation.Domain.Entities.CartItem { ProductId = i.ProductId, Quantity = i.Quantity }).ToList() };
             var expectedResult = new UpdateCartResult();
 
             _cartRepository.GetByIdAsync(cartId, Arg.Any<CancellationToken>()).Returns(cart);

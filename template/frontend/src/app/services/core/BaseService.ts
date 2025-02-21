@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { IService } from './IService';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { ApiResponse } from '../../models/core/ApiReponse';
+import { ApiSingleResponse } from '../../models/core/ApiSingleResponse';
 
 export abstract class BaseService<T, ID> implements IService<T, ID> {
     
@@ -17,31 +19,31 @@ export abstract class BaseService<T, ID> implements IService<T, ID> {
         this._url = environment.urlApi;
       }
 
-      insert(action: string, t: T): Observable<T> {
-        return this._http.post<T>(this._url+action, JSON.stringify(t),{  headers: this.headers});
+      insert(t: T, action: string =""): Observable<ApiSingleResponse<T>> {
+        return this._http.post<ApiSingleResponse<T>>(this._url+action, JSON.stringify(t),{  headers: this.headers});
       }
 
-      update(action: string,  t: T): Observable<T> {
-        return this._http.post<T>(this._url+action, JSON.stringify(t),{  headers: this.headers});
+      update(id: ID, t: T, action: string =""): Observable<ApiSingleResponse<T>> {
+        return this._http.put<ApiSingleResponse<T>>(this._url+action, JSON.stringify(t),{  headers: this.headers});
       }
 
-      findById(action: string, id: ID): Observable<any> {
-        return this._http.get<any>(this._url+action + "?id=" + id,{  headers: this.headers});
+      findById(id: ID,action: string =""): Observable<ApiSingleResponse<T>> {
+        return this._http.get<ApiSingleResponse<T>>(this._url+action + "/" + id,{  headers: this.headers});
       }
 
-      findBy(action: string, id: ID): Observable<T[]> {
+      findBy(id: ID, action: string =""): Observable<T[]> {
         return this._http.get<T[]>(this._url+action + "?id=" + id,{  headers: this.headers});
       }
 
-      findAll(action: string,  t : any): Observable<T[]> {
+      findAll(t : any, action: string =""): Observable<T[]> {
         return this._http.post<T[]>(this._url+action, JSON.stringify(t),{headers: this.headers});
       }
 
-      getAll(action: string): Observable<T[]> {
-        return this._http.get<T[]>(this._url+action,{  headers: this.headers});
+      getAll(action: string): Observable<ApiResponse<T>> {
+        return this._http.get<ApiResponse<T>>(this._url + action, { headers: this.headers });
       }
 
-      delete(action: string, t: any): Observable<T> {
-        return this._http.post<T>(this._url+action,t,{  headers: this.headers});
+      delete(id: any, action: string): Observable<T> {
+        return this._http.delete<T>(this._url+action+"/"+id,{  headers: this.headers});
       }
 }

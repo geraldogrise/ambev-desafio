@@ -21,6 +21,14 @@ public class Program
             Log.Information("Starting web application");
 
             WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    policy => policy.WithOrigins("http://localhost:4200") 
+                                    .AllowAnyHeader() 
+                                    .AllowAnyMethod() 
+                                    .AllowCredentials()); 
+            });
             builder.AddDefaultLogging();
 
             builder.Services.AddControllers();
@@ -63,6 +71,7 @@ public class Program
 
             app.UseHttpsRedirection();
 
+            app.UseCors("AllowSpecificOrigin");
             app.UseAuthentication();
             app.UseAuthorization();
 

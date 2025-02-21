@@ -75,9 +75,6 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Products
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateProduct(Guid id, [FromBody] UpdateProductRequest request, CancellationToken cancellationToken)
         {
-            if (id != request.Id)
-                return BadRequest(new ApiResponse { Success = false, Message = "ID in URL does not match ID in request body" });
-
 
             var validator = new UpdateProductRequestValidator();
             var validationResult = await validator.ValidateAsync(request, cancellationToken);

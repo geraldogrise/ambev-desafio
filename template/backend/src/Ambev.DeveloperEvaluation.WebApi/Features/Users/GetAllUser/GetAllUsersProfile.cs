@@ -14,6 +14,7 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Users.GetAllUser
         public GetAllUsersProfile()
         {
             CreateMap<GetAllUsersRequest, GetAllUsersCommand>();
+            CreateMap<GetAllUsersResult, GetAllUsersResponse>();
         }
     }
 }

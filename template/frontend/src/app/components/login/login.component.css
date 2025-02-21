@@ -1,0 +1,57 @@
+.full-screen-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+
+mat-card {
+  width: 400px; 
+  height: 350px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border:1px solid #006699;
+}
+
+mat-card-content {
+  width: 90%;
+  height: 90%; /* Define a altura para 90% do card */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px; 
+}
+
+button {
+  width: 80%;
+  height: 50px; 
+  font-size: 18px; 
+  font-weight: bold;
+}
+
+
+/* Define o background branco no input dentro do mat-form-field */
+mat-form-field input {
+  background-color: white !important;
+}
